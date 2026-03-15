@@ -2,7 +2,8 @@
   "name": "claude-code-focus",
   "displayName": "Claude Code Focus",
   "description": "Auto-control terminal panel based on Claude Code status",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "icon": "assets/icon.png",
   "publisher": "HayaShin5",
   "license": "MIT",
   "repository": {
