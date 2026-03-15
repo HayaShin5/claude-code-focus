@@ -1,6 +1,6 @@
 {
-  "name": "claude-code-focus",
-  "displayName": "ClaudeNinja",
+  "name": "claude-code-ninja",
+  "displayName": "ClaudeCodeNinja",
   "description": "Auto-control terminal panel based on Claude Code status",
   "version": "0.0.5",
   "icon": "assets/icon.png",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HayaShin5/claude-code-focus"
+    "url": "https://github.com/HayaShin5/claude-code-ninja"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -29,14 +29,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "claude-code-focus.setupHooks",
-        "title": "Claude Code Focus: Setup Hooks"
+        "command": "claude-code-ninja.setupHooks",
+        "title": "ClaudeCodeNinja: Setup Hooks"
       }
     ],
     "configuration": {
-      "title": "Claude Code Focus",
+      "title": "ClaudeCodeNinja",
       "properties": {
-        "claude-code-focus.enabled": {
+        "claude-code-ninja.enabled": {
           "type": "boolean",
           "default": true,
           "description": "Enable or disable automatic terminal panel control."

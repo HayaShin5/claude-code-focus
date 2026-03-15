@@ -1,4 +1,4 @@
-# Claude Code Focus
+# ClaudeCodeNinja
 
 A VSCode extension that automatically controls the terminal panel based on Claude Code's status.
 
@@ -23,10 +23,10 @@ You don't need to watch Claude Code while it works. Focus on your code — the t
 
 ### 1. Install the Extension
 
-Search for **"Claude Code Focus"** in the VSCode Extensions panel, or run:
+Search for **"ClaudeCodeNinja"** in the VSCode Extensions panel, or run:
 
 ```
-ext install HayaShin5.claude-code-focus
+ext install HayaShin5.claude-code-ninja
 ```
 
 ### 2. Configure Claude Code Hooks
@@ -34,7 +34,7 @@ ext install HayaShin5.claude-code-focus
 Open the Command Palette (`Cmd+Shift+P`) and run:
 
 ```
-Claude Code Focus: Setup Hooks
+ClaudeCodeNinja: Setup Hooks
 ```
 
 This automatically adds the required hooks to `~/.claude/settings.json`.

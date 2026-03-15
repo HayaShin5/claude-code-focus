@@ -23,7 +23,7 @@ let statusBarItem: vscode.StatusBarItem;
 let watcher: fs.FSWatcher | undefined;
 
 function isEnabled(): boolean {
-	return vscode.workspace.getConfiguration('claude-code-focus').get('enabled', true);
+	return vscode.workspace.getConfiguration('claude-code-ninja').get('enabled', true);
 }
 
 function updateStatus(status: string): void {
@@ -91,7 +91,7 @@ async function setupHooks(): Promise<void> {
 		if (hasVscodeStatus(existing.Notification) &&
 			hasVscodeStatus(existing.PostToolUse) &&
 			hasVscodeStatus(existing.Stop)) {
-			vscode.window.showInformationMessage('Claude Code Focus hooks are already configured.');
+			vscode.window.showInformationMessage('ClaudeCodeNinja hooks are already configured.');
 			return;
 		}
 	}
@@ -112,7 +112,7 @@ async function setupHooks(): Promise<void> {
 
 	fs.mkdirSync(CLAUDE_DIR, { recursive: true });
 	fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2) + '\n');
-	vscode.window.showInformationMessage('Claude Code Focus hooks have been configured in ~/.claude/settings.json');
+	vscode.window.showInformationMessage('ClaudeCodeNinja hooks have been configured in ~/.claude/settings.json');
 }
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -125,7 +125,7 @@ export function activate(context: vscode.ExtensionContext): void {
 	context.subscriptions.push(statusBarItem);
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('claude-code-focus.setupHooks', setupHooks)
+		vscode.commands.registerCommand('claude-code-ninja.setupHooks', setupHooks)
 	);
 
 	startWatching();
