@@ -1,7 +1,7 @@
 {
   "name": "claude-code-ninja",
   "displayName": "ClaudeCodeNinja",
-  "description": "Auto-control terminal panel based on Claude Code status",
+  "description": "Claude Code works silently in the background. You don't need to watch.",
   "version": "0.0.5",
   "icon": "assets/icon.png",
   "publisher": "HayaShin5",
