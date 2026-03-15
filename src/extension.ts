@@ -3,7 +3,21 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
 
-const STATUS_FILE = path.join(os.homedir(), '.claude', 'vscode-status');
+const CLAUDE_DIR = path.join(os.homedir(), '.claude');
+const STATUS_FILE = path.join(CLAUDE_DIR, 'vscode-status');
+const SETTINGS_FILE = path.join(CLAUDE_DIR, 'settings.json');
+
+const HOOKS_CONFIG = {
+	Notification: [
+		{ matcher: '', hooks: [{ type: 'command', command: `echo 'waiting' > ~/.claude/vscode-status` }] }
+	],
+	PostToolUse: [
+		{ matcher: '', hooks: [{ type: 'command', command: `echo 'working' > ~/.claude/vscode-status` }] }
+	],
+	Stop: [
+		{ matcher: '', hooks: [{ type: 'command', command: `echo 'idle' > ~/.claude/vscode-status` }] }
+	],
+};
 
 let statusBarItem: vscode.StatusBarItem;
 let watcher: fs.FSWatcher | undefined;
@@ -71,6 +85,46 @@ function startWatching(): void {
 	}
 }
 
+async function setupHooks(): Promise<void> {
+	let settings: Record<string, unknown> = {};
+	try {
+		const content = fs.readFileSync(SETTINGS_FILE, 'utf-8');
+		settings = JSON.parse(content);
+	} catch {
+		// File doesn't exist or is invalid — start fresh
+	}
+
+	const existing = settings.hooks as Record<string, unknown[]> | undefined;
+	if (existing?.Notification && existing?.PostToolUse && existing?.Stop) {
+		const hasVscodeStatus = (arr: unknown[]) =>
+			JSON.stringify(arr).includes('vscode-status');
+		if (hasVscodeStatus(existing.Notification) &&
+			hasVscodeStatus(existing.PostToolUse) &&
+			hasVscodeStatus(existing.Stop)) {
+			vscode.window.showInformationMessage('Claude Code Focus hooks are already configured.');
+			return;
+		}
+	}
+
+	const mergedHooks: Record<string, unknown[]> = { ...(existing || {}) };
+	for (const [event, config] of Object.entries(HOOKS_CONFIG)) {
+		const current = mergedHooks[event] as unknown[] | undefined;
+		if (current) {
+			if (!JSON.stringify(current).includes('vscode-status')) {
+				mergedHooks[event] = [...current, ...config];
+			}
+		} else {
+			mergedHooks[event] = config;
+		}
+	}
+
+	settings.hooks = mergedHooks;
+
+	fs.mkdirSync(CLAUDE_DIR, { recursive: true });
+	fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2) + '\n');
+	vscode.window.showInformationMessage('Claude Code Focus hooks have been configured in ~/.claude/settings.json');
+}
+
 export function activate(context: vscode.ExtensionContext): void {
 	statusBarItem = vscode.window.createStatusBarItem(
 		vscode.StatusBarAlignment.Left,
@@ -79,6 +133,10 @@ export function activate(context: vscode.ExtensionContext): void {
 	statusBarItem.text = '💤 Claude: 待機中';
 	statusBarItem.show();
 	context.subscriptions.push(statusBarItem);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('claude-code-focus.setupHooks', setupHooks)
+	);
 
 	startWatching();
 }

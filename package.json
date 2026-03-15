@@ -26,6 +26,12 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "claude-code-focus.setupHooks",
+        "title": "Claude Code Focus: Setup Hooks"
+      }
+    ],
     "configuration": {
       "title": "Claude Code Focus",
       "properties": {

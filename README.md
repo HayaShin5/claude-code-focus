@@ -46,6 +46,17 @@ ext install HayaShin5.claude-code-focus
 
 ### 2. Configure Claude Code Hooks
 
+Open the Command Palette (`Cmd+Shift+P`) and run:
+
+```
+Claude Code Focus: Setup Hooks
+```
+
+This automatically adds the required hooks to `~/.claude/settings.json`.
+
+<details>
+<summary>Manual setup</summary>
+
 Add the following to your `~/.claude/settings.json`:
 
 ```json
@@ -78,6 +89,8 @@ Add the following to your `~/.claude/settings.json`:
   }
 }
 ```
+
+</details>
 
 ## Development
 
