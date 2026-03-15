@@ -31,15 +31,15 @@ function updateStatus(status: string): void {
 
 	switch (trimmed) {
 		case 'working':
-			statusBarItem.text = '🤖 Claude: 作業中';
+			statusBarItem.text = '🤖 Claude: Working';
 			vscode.commands.executeCommand('workbench.action.closePanel');
 			break;
 		case 'waiting':
-			statusBarItem.text = '⚠️ Claude: 要確認';
+			statusBarItem.text = '⚠️ Claude: Waiting';
 			vscode.commands.executeCommand('workbench.action.terminal.focus');
 			break;
 		case 'idle':
-			statusBarItem.text = '✅ Claude: 完了';
+			statusBarItem.text = '✅ Claude: Done';
 			vscode.commands.executeCommand('workbench.action.terminal.focus');
 			break;
 	}
@@ -120,7 +120,7 @@ export function activate(context: vscode.ExtensionContext): void {
 		vscode.StatusBarAlignment.Left,
 		100
 	);
-	statusBarItem.text = '💤 Claude: 待機中';
+	statusBarItem.text = '💤 Claude: Idle';
 	statusBarItem.show();
 	context.subscriptions.push(statusBarItem);
 
