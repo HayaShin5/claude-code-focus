@@ -40,7 +40,7 @@ function updateStatus(status: string): void {
 			break;
 		case 'idle':
 			statusBarItem.text = '✅ Claude: 完了';
-			vscode.commands.executeCommand('workbench.action.closePanel');
+			vscode.commands.executeCommand('workbench.action.terminal.focus');
 			break;
 	}
 }

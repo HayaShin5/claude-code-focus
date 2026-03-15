@@ -10,7 +10,7 @@ While Claude Code is working autonomously, the terminal panel is closed to maxim
 |---|---|---|
 | `working` | Close | 🤖 Claude: Working |
 | `waiting` | Open + Focus | ⚠️ Claude: Needs Input |
-| `idle` | Close | ✅ Claude: Done |
+| `idle` | Open + Focus | ✅ Claude: Done |
 | On startup | No change | 💤 Claude: Idle |
 
 > **Note:** When the status is `working` or `idle`, the entire bottom panel is closed — not just the terminal. If you have the Problems or Output panel open, it will also be closed.
@@ -29,7 +29,7 @@ flowchart LR
 |---|---|---|
 | `Notification` | `waiting` | Open terminal + focus |
 | `PostToolUse` | `working` | Close panel |
-| `Stop` | `idle` | Close panel |
+| `Stop` | `idle` | Open terminal + focus |
 
 ## Setup
 
