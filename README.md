@@ -4,6 +4,10 @@ A VSCode extension that automatically controls the terminal panel based on Claud
 
 While Claude Code is working autonomously, the terminal panel is closed to maximize your editor space. When user input is needed, the terminal opens and focuses automatically.
 
+## Why
+
+You don't need to watch Claude Code while it works. Focus on your code — the terminal will come back when Claude needs you.
+
 ## Behavior
 
 | Status | Terminal Panel | Status Bar |
