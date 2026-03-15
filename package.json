@@ -1,6 +1,6 @@
 {
   "name": "claude-code-focus",
-  "displayName": "Claude Code Focus",
+  "displayName": "ClaudeNinja",
   "description": "Auto-control terminal panel based on Claude Code status",
   "version": "0.0.5",
   "icon": "assets/icon.png",
