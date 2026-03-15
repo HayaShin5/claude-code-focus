@@ -27,16 +27,6 @@ You don't need to watch Claude Code while it works. Focus on your code — the t
 
 ## Setup
 
-### 1. Install the Extension
-
-Search for **"ClaudeCodeNinja"** in the VSCode Extensions panel, or run:
-
-```
-ext install HayaShin5.claude-code-ninja
-```
-
-### 2. Configure Claude Code Hooks
-
 Open the Command Palette (`Cmd+Shift+P`) and run:
 
 ```
@@ -82,21 +72,6 @@ Add the following to your `~/.claude/settings.json`:
 ```
 
 </details>
-
-## Development
-
-```bash
-npm install
-npm run watch
-```
-
-Press `F5` to launch the extension in debug mode. To test manually:
-
-```bash
-echo 'waiting' > ~/.claude/vscode-status
-echo 'working' > ~/.claude/vscode-status
-echo 'idle' > ~/.claude/vscode-status
-```
 
 ## License
 
